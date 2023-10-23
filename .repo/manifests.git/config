@@ -1,0 +1,39 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	ignorecase = true
+	precomposeunicode = true
+[filter "lfs"]
+	smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
+[remote "origin"]
+	url = https://github.com/nexient-llc/common-automation-framework.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[manifest]
+	platform = auto
+[branch "default"]
+	remote = origin
+	merge = refs/heads/main
+[repo "syncstate.main"]
+	synctime = 2023-10-23T18:07:38.417570Z
+	version = 1
+[repo "syncstate.sys"]
+	argv = ['/Users/chris.taylor/bitbucket_automation/tmp/magicdust/.repo/repo/main.py', '--repo-dir=/Users/chris.taylor/bitbucket_automation/tmp/magicdust/.repo', '--wrapper-version=2.32', '--wrapper-path=/opt/homebrew/bin/repo', '--', 'sync']
+[repo "syncstate.options"]
+	jobs = 10
+	outermanifest = true
+	jobsnetwork = 1
+	jobscheckout = 8
+	mpupdate = true
+	clonebundle = true
+	retryfetches = 0
+	prune = true
+	repoverify = true
+	quiet = false
+	verbose = false
+[repo "syncstate.remote.origin"]
+	url = https://github.com/nexient-llc/common-automation-framework.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[repo "syncstate.branch.default"]
+	remote = origin
+	merge = refs/heads/main

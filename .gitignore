@@ -1,0 +1,13 @@
+*.pyc
+.idea
+build/
+dist/
+*.egg-info
+.coverage
+.pytest_cache
+venv
+.vscode
+.venv
+
+# Pre-commit hook
+.pre-commit-config.yaml
