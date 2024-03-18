@@ -1,11 +1,12 @@
-from libs.jinja.jinja_utils import JinjaTemplate
+import sys
+import traceback
+
+from libs import get_logger
 from libs.boto3.ec2 import BotoEc2
 from libs.boto3.ecs import BotoEcs
 from libs.boto3.elbv2 import BotoElbv2
 from libs.boto3.route53 import BotoRoute53
-from libs import get_logger
-import traceback
-import sys
+from libs.jinja.jinja_utils import JinjaTemplate
 
 logger = get_logger(__name__)
 

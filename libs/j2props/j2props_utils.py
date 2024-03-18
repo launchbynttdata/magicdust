@@ -1,12 +1,13 @@
-import yaml
-from jinja2 import Template, Environment, FileSystemLoader
 import os
 from pathlib import Path
+
 import boto3
+import yaml
 from botocore.exceptions import ClientError
+from jinja2 import Environment, FileSystemLoader, Template
+
 
 class J2PropsTemplate:
-
     def __init__(self, region="us-east-2"):
         self.region = region
         self._aws_client = None
@@ -36,11 +37,11 @@ class J2PropsTemplate:
         template_dir = Path(template_file).parent
         template_file = Path(template_file).name
         jinja_env = Environment(loader=FileSystemLoader(template_dir))
-        jinja_env.filters['awssecret'] = self.__lookup_aws_secret_filter
-        jinja_env.filters['awssecretarn'] = self.__lookup_aws_secret_arn_filter
+        jinja_env.filters["awssecret"] = self.__lookup_aws_secret_filter
+        jinja_env.filters["awssecretarn"] = self.__lookup_aws_secret_arn_filter
 
         # Load YAML input
-        with open(input_file, 'r') as file:
+        with open(input_file, "r") as file:
             input_data = yaml.safe_load(file)
 
         # Load Jinja2 template
@@ -69,7 +70,9 @@ class J2PropsTemplate:
         if self._aws_client is None:
             # Create a Secrets Manager client
             session = boto3.session.Session()
-            self._aws_client = session.client(service_name='secretsmanager', region_name=self.region)
+            self._aws_client = session.client(
+                service_name="secretsmanager", region_name=self.region
+            )
         return self._aws_client
 
     def __lookup_aws_secret_filter(self, secret_name):
@@ -80,15 +83,14 @@ class J2PropsTemplate:
         """
         client = self.__get_client()
         try:
-            get_secret_value_response = client.get_secret_value(
-                SecretId=secret_name)
+            get_secret_value_response = client.get_secret_value(SecretId=secret_name)
         except ClientError as e:
             # For a list of exceptions thrown, see
             # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
             raise e
 
         # Decrypts secret using the associated KMS key.
-        secret = get_secret_value_response['SecretString']
+        secret = get_secret_value_response["SecretString"]
         return secret
 
     def __lookup_aws_secret_arn_filter(self, secret_name):
@@ -99,13 +101,12 @@ class J2PropsTemplate:
         """
         client = self.__get_client()
         try:
-            get_secret_value_response = client.get_secret_value(
-                SecretId=secret_name)
+            get_secret_value_response = client.get_secret_value(SecretId=secret_name)
         except ClientError as e:
             # For a list of exceptions thrown, see
             # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
             raise e
 
         # Decrypts secret using the associated KMS key.
-        secret = get_secret_value_response['ARN']
+        secret = get_secret_value_response["ARN"]
         return secret

@@ -1,15 +1,15 @@
-import benedict
-from jinja2 import Template
 import json
 import os
 import re
 
-DYNAMIC_VARS_PLACEHOLDER = '%%'
+import benedict
+from jinja2 import Template
+
+DYNAMIC_VARS_PLACEHOLDER = "%%"
 
 
 class JinjaTemplate:
-
-    def __init__(self, values_input_file, environment, env_vars_prefix='AWS_ENV_VARS_'):
+    def __init__(self, values_input_file, environment, env_vars_prefix="AWS_ENV_VARS_"):
         # generate the input values file from the jinja template
         if not os.path.isfile(values_input_file):
             raise FileExistsError(f"Not a valid file: {values_input_file}")
@@ -24,7 +24,9 @@ class JinjaTemplate:
 
     # Public methods
 
-    def generate_from_template(self, template_file, output_format="yaml", print_output=True):
+    def generate_from_template(
+        self, template_file, output_format="yaml", print_output=True
+    ):
         """
         Renders the AWS resource yaml files from its respective jinja templates
         :param template_file: Full path of the jinja template file
@@ -48,7 +50,9 @@ class JinjaTemplate:
         :return: Dictionary of values
         """
         # Substitutes the environment variables
-        input_values_text = self.__populate_environment_variables(self.input_values_text)
+        input_values_text = self.__populate_environment_variables(
+            self.input_values_text
+        )
         # Loads the values in yaml format
         input_values_dict = benedict.load_yaml_str(input_values_text)
         # returns the yaml for the common environment

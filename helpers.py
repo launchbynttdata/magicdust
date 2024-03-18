@@ -1,22 +1,20 @@
-#!/usr/bin/env python3
-
 import argparse
+
 from libs import get_logger
-from libs.jinja_command import JinjaCommand
-from libs.j2props_command import J2PropsCommand
 from libs.aws_command import AWSCommand
+from libs.j2props_command import J2PropsCommand
+from libs.jinja_command import JinjaCommand
 
 logger = get_logger(__name__)
 
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Automation Helper",
-        add_help=True,
-        prog="magicdust")
+        description="Automation Helper", add_help=True, prog="magicdust"
+    )
     command_parsers = parser.add_subparsers(
-        dest="command",
-        title="command",
-        help="Sub commands for the main cli")
+        dest="command", title="command", help="Sub commands for the main cli"
+    )
 
     # Load jinja parser
     JinjaCommand.create_parser_in(command_parsers)

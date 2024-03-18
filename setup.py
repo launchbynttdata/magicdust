@@ -1,6 +1,7 @@
 import os
-from setuptools import setup, find_packages
 import subprocess
+
+from setuptools import find_packages, setup
 
 VERSION = "1.0.1"
 
@@ -34,17 +35,15 @@ setup(
     description="Provides a cloud and deployment orchestration tool suite.",
     license="Apache License 2.0",
     keywords="jinja2",
-    url="https://github.com/nexient-llc/magicdust",
+    url="https://github.com/launchbynttdata/magicdust",
     packages=find_packages(),
-    py_modules=['helpers'],
+    py_modules=["helpers"],
     install_requires=install_requires(),
-    long_description='Provides a cloud and deployment orchestration tool suite.',
+    long_description="Provides a cloud and deployment orchestration tool suite.",
     classifiers=[
         "Topic :: Utilities",
         "License :: Nexient :: Apache Software License",
         "License :: OSI Approved :: Apache Software License",
     ],
-    entry_points={
-        "console_scripts": ["magicdust=helpers:main"]
-    }
+    entry_points={"console_scripts": ["magicdust=helpers:main"]},
 )
