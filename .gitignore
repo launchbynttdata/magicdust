@@ -8,6 +8,11 @@ dist/
 venv
 .vscode
 .venv
+__pycache__
 
 # Pre-commit hook
 .pre-commit-config.yaml
+
+# LCAF
+.repo
+components
