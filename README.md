@@ -6,7 +6,7 @@ AWS cloud resource provisioning in json or yaml data structures
 Could be extended to support dynamically generating any data structure type describing a deployment to some API.
 
 User can install this repo as a python module and use it in their code. This could also be used as a CLI.
-<br>[GitHub] https://github.com/nexient-llc/magicdust
+<br>[GitHub] https://github.com/launchbynttdata/magicdust
 
 ## Usage
 * Lists down all the commands:
@@ -91,7 +91,7 @@ deactivate
 This module could be installed as a pip package.
 ```buildoutcfg
 # Clone the repository
-git clone https://github.com/nexient-llc/magicdust
+git clone https://github.com/launchbynttdata/magicdust
 # cd into the repo
 cd magicdust
 # install the module

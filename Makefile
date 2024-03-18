@@ -10,28 +10,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Include custom values from .cafenv. Repository root is assumed to be the working directory.
+# Include custom values from .lcafenv. Repository root is assumed to be the working directory.
 # Including overriding values in this file is preferred over modifying the contents below.
-CAF_ENV_FILE = .cafenv
--include $(CAF_ENV_FILE)
+LCAF_ENV_FILE = .lcafenv
+-include $(LCAF_ENV_FILE)
 
 # Source repository for repo manifests
-REPO_MANIFESTS_URL ?= https://github.com/nexient-llc/common-automation-framework.git
+REPO_MANIFESTS_URL ?= https://github.com/launchbynttdata/launch-common-automation-framework.git
 # Branch of source repository for repo manifests. Other tags not currently supported.
 # TODO: replace with git tag when supported
-REPO_BRANCH ?= main
+REPO_BRANCH ?= refs/tags/1.0.0
 # Path to seed manifest in repository referenced in REPO_MANIFESTS_URL
-REPO_MANIFEST ?= manifests/terraform_modules/seed/manifest.xml
+REPO_MANIFEST ?= manifests/python/seed/manifest.xml
 
 # Settings to pull in Nexient version of (google) repo utility that supports environment substitution:
-REPO_URL ?= https://github.com/nexient-llc/git-repo.git
+REPO_URL ?= https://github.com/launchbynttdata/git-repo.git
 # Branch of the repository referenced by REPO_URL to use
 # TODO: replace with git tag when supported
 REPO_REV ?= main
 export REPO_REV REPO_URL
 
 # Example variable to substituted after init, but before sync in repo manifests.
-GITBASE ?= https://github.com/nexient-llc/
+GITBASE ?= https://github.com/launchbynttdata/
 # TODO: replace with git tag when supported
 GITREV ?= main
 export GITBASE GITREV
