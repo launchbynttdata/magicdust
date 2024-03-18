@@ -1,1 +1,0 @@
-0000000000000000000000000000000000000000 2c371eca94ef128930380d3ae72f1d510182ad05 Chris Taylor <chris11.taylor@nttdata.com> 1698084458 -0500	fetch --quiet --progress launch-dso-platform --prune --recurse-submodules=no --tags +refs/heads/*:refs/remotes/launch-dso-platform/* +refs/heads/main:refs/remotes/launch-dso-platform/main +refs/tags/*:refs/tags/*: storing head
