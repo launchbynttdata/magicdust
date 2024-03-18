@@ -1,1 +1,0 @@
-components/module/linkfiles/.tflint.hcl
